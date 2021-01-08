@@ -15,13 +15,11 @@ public class MyLinkedList{
      start.setNext(end);
      end.setPrev(start);
    }else if(size == 1){
-     System.out.println(this.toString());
-     end.setData(value);
-     System.out.println(this.toString());
+     end = current;
      start.setNext(end);
-     System.out.println(this.toString());
      end.setPrev(start);
      System.out.println(this.toString());
+
    }else{
      end.setNext(current);
      current.setPrev(end);
