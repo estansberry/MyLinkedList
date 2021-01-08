@@ -28,11 +28,9 @@ public class Node{
 
   public void setNext(Node value){
     next = value;
-    value.setPrev(this);
    }
 
   public void setPrev(Node value){
     prev = value;
-    value.setNext(this);
    }
 }

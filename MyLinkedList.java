@@ -14,12 +14,15 @@ public class MyLinkedList{
      start.setData(value);
      end.setData(value);
      start.setNext(end);
+     end.setPrev(start);
    }else if(size == 1){
      end.setData(value);
      start.setNext(end);
+     end.setPrev(start);
    }else{
      Node current = new Node(value);
      end.setNext(current);
+     current.setPrev(end);
      end = current;
    }
    size += 1;
@@ -33,12 +36,15 @@ public class MyLinkedList{
    Node newnode = new Node(value);
    if(index == 0){
      start.setPrev(newnode);
+     newnode.setNext(start);
      start = newnode;
    }else if(index == size - 1){
      end.setNext(newnode);
+     newnode.setPrev(end);
      end = newnode;
    }else{
      getThisNode(index).setPrev(newnode);
+     newnode.setNext(getThisNode(index));
    }
    size += 1;
    return(true);
