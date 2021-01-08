@@ -3,7 +3,12 @@ public class Driver{
     MyLinkedList newlist = new MyLinkedList();
     newlist.add("hello");
     newlist.add("hey");
+    MyLinkedList nextlist = new MyLinkedList();
+    nextlist.add("yes");
+    nextlist.add("no");
+    newlist.extend(nextlist);
     System.out.println(newlist.toString());
-    System.out.println(newlist.getThisNode(0).getData());
+    newlist.remove(3);
+    System.out.println(newlist.toString());
   }
 }
