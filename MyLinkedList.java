@@ -54,6 +54,43 @@ public class MyLinkedList{
    return(true);
  }
 
+ public String remove(int index){
+   if(size == 0 || index >= size){
+     throw new IndexOutOfBoundsException("That index is out of bounds for this LinkedList!");
+   }String oldval = getThisNode(index).getData();
+   if(index == 0 & size == 1){
+     start = null;
+     end = null;
+   }else if(index == 0){
+     start = start.getNext();
+   }else if (index == size - 1){
+     end = end.getPrev();
+   }else{
+     getThisNode(index - 1).setNext(getThisNode(index + 1));
+     getThisNode(index + 1).setPrev(getThisNode(index - 1));
+   }
+   size --;
+   return(oldval);
+ }
+
+ public void extend(MyLinkedList other){
+   if(size == 0){
+     start = other.start;
+     end = other.end;
+     size = other.size();
+   }else if (other.size == 0){
+     size = size;
+   }else{
+     end.setNext(other.start);
+     other.start.setPrev(end);
+     end = other.end;
+     size = size + other.size();
+     other.size = 0;
+     other.start = null;
+     other.end = null;
+   }
+ }
+
  public String get(int index){
    if(index >= size){
      throw new IndexOutOfBoundsException("Your index is too big for this LinkedList!");
