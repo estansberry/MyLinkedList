@@ -1,32 +1,38 @@
 public class Node{
- public Node(String value){
+  private String data;
+  private Node next,prev;
+  public Node(String value){
+     data = value;
+     next = null;
+     prev = null;
+   }
 
- }
- private String data;
- private Node next,prev;
- //write get/set methods for all three instance variables.
 
- public String getData(int index){
-   return(data);
- }
+  public String getData(){
+     return(data);
+   }
 
- public String getNext(int index){
+  public String getNext(){
+     return(next.getData());
+   }
 
- }
+  public String getPrev(){
+     return(prev.getData());
+   }
 
- public String getPrev(int index){
+  public String setData(String value){
+    String oldval = data;
+    data = value;
+    return(oldval);
+   }
 
- }
+  public void setNext(Node value){
+    next = value;
+    value.setPrev(this);
+   }
 
- public void setData(int index, String value){
-
- }
-
- public void setNext(int index, String value){
-
- }
-
- public void setPrev(int index, String value){
-
- }
+  public void setPrev(Node value){
+    prev = value;
+    value.setNext(this);
+   }
 }
