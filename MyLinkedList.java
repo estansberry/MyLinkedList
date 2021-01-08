@@ -14,12 +14,6 @@ public class MyLinkedList{
      end = current;
      start.setNext(end);
      end.setPrev(start);
-   }else if(size == 1){
-     end = current;
-     start.setNext(end);
-     end.setPrev(start);
-     System.out.println(this.toString());
-
    }else{
      end.setNext(current);
      current.setPrev(end);
@@ -29,7 +23,7 @@ public class MyLinkedList{
    return(true);
  }
 
- public void add(int index, String value){
+ public boolean add(int index, String value){
    if(index > size){
      throw new IndexOutOfBoundsException("Your index is too big for this LinkedList!");
    }
@@ -44,16 +38,24 @@ public class MyLinkedList{
      start.setPrev(newnode);
      newnode.setNext(start);
      start = newnode;
-   }else if(index == size - 1){
+   }else if(index == size){
      end.setNext(newnode);
      newnode.setPrev(end);
      end = newnode;
    }else{
-     getThisNode(index).setPrev(newnode);
-     newnode.setNext(getThisNode(index));
+     //getThisNode(index).setPrev(newnode);
+     //newnode.setNext(getThisNode(index));
+     Node newPrev = getThisNode(index - 1);
+     Node newNext = getThisNode(index);
+     newnode.setPrev(newPrev);
+     newnode.setNext(newNext);
+     newPrev.setNext(newnode);
+     newNext.setPrev(newnode);
    }
    size += 1;
+   return(true);
  }
+
  public String get(int index){
    if(index >= size){
      throw new IndexOutOfBoundsException("Your index is too big for this LinkedList!");
@@ -78,14 +80,17 @@ public class MyLinkedList{
      linkedstring = linkedstring + ", ";
    }linkedstring = linkedstring + getThisNode(size - 1).getData();
    linkedstring = linkedstring + "]";
-   System.out.println(start.getData());
-   System.out.println(end.getData());
    return(linkedstring);
  }
 
  public Node getThisNode(int index){
+   if (index == 0) {
+     return start;
+  }if (index == size - 1) {
+    return end;
+  }
    Node newnode = start;
-   for(int i = 0; i < index - 1; i ++){
+   for(int i = 0; i < index; i ++){
        newnode = newnode.getNext();
    }return(newnode);
  }
