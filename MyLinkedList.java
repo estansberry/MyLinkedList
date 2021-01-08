@@ -8,9 +8,10 @@ public class MyLinkedList{
    return(size);
  }
  public boolean add(String value){
+   Node current = new Node(value);
    if(size == 0){
-     start.setData(value);
-     end.setData(value);
+     start = current;
+     end = current;
      start.setNext(end);
      end.setPrev(start);
    }else if(size == 1){
@@ -18,7 +19,6 @@ public class MyLinkedList{
      start.setNext(end);
      end.setPrev(start);
    }else{
-     Node current = new Node(value);
      end.setNext(current);
      current.setPrev(end);
      end = current;
@@ -32,6 +32,12 @@ public class MyLinkedList{
      throw new IndexOutOfBoundsException("Your index is too big for this LinkedList!");
    }
    Node newnode = new Node(value);
+   if (size == 0){
+     start = newnode;
+     end = newnode;
+     start.setNext(end);
+     end.setPrev(start);
+   }
    if(index == 0){
      start.setPrev(newnode);
      newnode.setNext(start);
@@ -76,7 +82,7 @@ public class MyLinkedList{
 
  private Node getThisNode(int index){
    Node newnode = start;
-   for(int i = 0; i < index; i ++){
+   for(int i = 0; i < index - 1; i ++){
        newnode = newnode.getNext();
    }return(newnode);
  }
