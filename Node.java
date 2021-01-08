@@ -12,12 +12,12 @@ public class Node{
      return(data);
    }
 
-  public String getNext(){
-     return(next.getData());
+  public Node getNext(){
+     return(next);
    }
 
-  public String getPrev(){
-     return(prev.getData());
+  public Node getPrev(){
+     return(prev);
    }
 
   public String setData(String value){
