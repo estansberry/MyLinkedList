@@ -43,8 +43,6 @@ public class MyLinkedList{
      newnode.setPrev(end);
      end = newnode;
    }else{
-     //getThisNode(index).setPrev(newnode);
-     //newnode.setNext(getThisNode(index));
      Node newPrev = getThisNode(index - 1);
      Node newNext = getThisNode(index);
      newnode.setPrev(newPrev);
@@ -83,7 +81,7 @@ public class MyLinkedList{
    return(linkedstring);
  }
 
- public Node getThisNode(int index){
+ private Node getThisNode(int index){
    if (index == 0) {
      return start;
   }if (index == size - 1) {
